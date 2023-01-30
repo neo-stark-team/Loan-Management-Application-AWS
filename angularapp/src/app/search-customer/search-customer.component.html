@@ -1,0 +1,45 @@
+
+<div *ngIf="model">
+    <div id="adminnav">
+        <app-admin-navbar></app-admin-navbar>
+    </div>
+    <form class="search">
+        <input type="text" [(ngModel)]="id" name="search" placeholder="Enter loan id to search">
+        <button (click)="searchCustomer(id)" class="btn btn-info" style="margin-left: 10px">Search</button>
+    </form>
+<table class="back">
+    <tbody>
+        <tr>
+        <div class="detailsofcustomer">
+            <table>
+                <tr class="first"><td>Applicant Name :</td><td>{{ model.applicantName }}</td></tr>
+                <tr><td>Loan Id :</td><td>{{ model.loanId }}</td></tr>
+                <tr><td>Applicant Type :</td><td>{{ model.loantype }}</td></tr>
+                <tr><td>Applicant Address :</td><td>{{ model.applicantAddress }}</td></tr>
+                <tr><td>Applicant Mobile :</td><td>{{ model.applicantMobile }}</td></tr>
+                <tr><td>Applicant Email :</td><td>{{ model.applicantEmail }}</td></tr>
+                <tr><td>Applicant Aadhar No :</td><td>{{ model.applicantAadhar }}</td></tr>
+                <tr><td>Applicant Pan No :</td><td>{{ model.applicantPan }}</td></tr>
+                <tr><td>Applicant Salary :</td><td>{{model.applicantSalary }}</td></tr>
+                <tr><td>Amount Required :</td><td>{{ model.loanAmountRequired }}</td></tr>
+                <tr><td>Repayment Months :</td><td>{{ model.repaymentMonths }}</td></tr>
+                <tr><td>App/Rej:</td><td>{{ model.apprej }}</td></tr>
+              </table>
+        <div>
+             <td> <button routerLink="/adminapprovedloan" class="btn btn-info" style="margin-left: 10px" >Back to Search</button></td>
+        </div>
+    </div>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div *ngIf="!model">
+    <div id="adminnav">
+        <app-admin-navbar></app-admin-navbar>
+    </div>
+    <form class="search">
+        <input type="text" [(ngModel)]="id" name="search" placeholder="Enter loan id to search">
+        <button (click)="searchCustomer(id)" class="btn btn-info" style="margin-left: 10px">Search</button>
+    </form>
+   <p class="wrong"> Enter Correct Id   <button routerLink="/adminapprovedloan" class="btn btn-info" style="margin-left: 10px">Back to Search</button></p>
+</div>  

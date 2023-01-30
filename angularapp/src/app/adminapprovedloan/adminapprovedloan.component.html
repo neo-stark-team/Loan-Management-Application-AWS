@@ -1,0 +1,45 @@
+<div id="adminnav">
+    <app-admin-navbar></app-admin-navbar>
+</div>
+<form class="search">
+    <input type="text" [(ngModel)]="id" name="seach" placeholder="Enter loan id to search">
+    <button (click)="searchCustomer(id)" class="btn btn-info" style="margin-left : 10px">Search</button>
+</form>
+<table class="back">
+    <tbody>
+        <tr *ngFor="let i of users">
+            <div *ngIf="i.apprej!=null">
+                <div class="detailsofcustomer">
+                    <table>
+                        <tr class="first"><td>Applicant Name :</td><td>{{ i.applicantName }}</td></tr>
+                        <tr><td>Loan Id :</td><td>{{ i.loanId }}</td></tr>
+                        <tr><td>Applicant Type :</td><td>{{ i.loantype }}</td></tr>
+                        <tr><td>Applicant Address :</td><td>{{ i.applicantAddress }}</td></tr>
+                        <tr><td>Applicant Mobile :</td><td>{{ i.applicantMobile }}</td></tr>
+                        <tr><td>Applicant Email :</td><td>{{ i.applicantEmail }}</td></tr>
+                        <tr><td>Applicant Aadhar No :</td><td>{{ i.applicantAadhar }}</td></tr>
+                        <tr><td>Applicant Pan No :</td><td>{{ i.applicantPan }}</td></tr>
+                        <tr><td>Applicant Salary :</td><td>{{ i.applicantSalary }}</td></tr>
+                        <tr><td>Amount Required :</td><td>{{ i.loanAmountRequired }}</td></tr>
+                        <tr><td>Repayment Months :</td><td>{{ i.repaymentMonths }}</td></tr>
+                      </table>
+                    <br>
+                    <div class="buttons">
+                        <td><button (click)="deleteCustomer(i.loanId)" class="btn btn-danger">Delete</button>
+                            <button (click)="customerDetails(i.loanId)" class="btn btn-success"
+                                style="margin-left : 10px">View</button>
+                            <button (click)="editCustomer(i.loanId)" class="btn btn-secondary"
+                                style="margin-left : 10px"> Edit</button>
+                        </td>
+                        <container-element [ngSwitch]="i.apprej">
+                            <label *ngSwitchCase="'app'"> <button class="btn btn-success"
+                                    value="Approved">Approved</button></label>
+                            <label *ngSwitchCase="'rej'"><button
+                                    class="btn btn-mini btn-danger">Rejected</button></label>
+                        </container-element>
+                    </div>
+                </div>
+            </div>
+        </tr>
+    </tbody>
+</table>
